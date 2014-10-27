@@ -10,7 +10,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="links">
     <% @links.each do |link| %>
       <tr>
         <td><%= link.link %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Link', new_link_path %>
+<%= link_to 'Add a Link', new_link_path, id: "add_link" %>
