@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :link do
-    link        "MyString"
-    description "MyText"
-    user_id 1
+    address         "www.google.com"
+    description     "MyText"
+    user_id         1
   end
 end

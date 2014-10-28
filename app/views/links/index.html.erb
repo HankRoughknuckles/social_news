@@ -1,3 +1,5 @@
+<% provide(:title, "Social News - All Links") %>
+
 <h1>Listing links</h1>
 
 <table>
@@ -13,12 +15,14 @@
   <tbody class="links">
     <% @links.each do |link| %>
       <tr>
-        <td><%= link.link %></td>
+        <td><%= link_to link.address, link.address %></td>
         <td><%= link.description %></td>
         <td><%= link.user_id %></td>
         <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if link.user == current_user %>
+          <td><%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %></td>
+          <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,6 @@
 
 <br>
 
-<%= link_to 'Add a Link', new_link_path, id: "add_link" %>
+<% if user_signed_in? %>
+  <%= link_to 'Add a Link', new_link_path, id: "add_link" %>
+<% end %>
