@@ -34,14 +34,15 @@ gem 'spring',        group: :development # Spring speeds up development by keepi
 
 group :development, :test do
   gem 'guard'
-  gem 'rspec-rails'
+  gem "rspec-rails", '~> 2.14.0.rc1'
   gem 'factory_girl_rails'  #use factories for test, not fixtures
 end
 
 group :test do
   gem 'capybara'            #intuitive testing language
   gem 'selenium-webdriver'  #allows js in tests
-  gem "spork"               #quicker tests
+  gem 'spork', :github => 'sporkrb/spork'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem "guard-spork"         #automatic tests on file save
   gem "guard-rspec"         #ditto
   gem 'database_cleaner'    #clean the database in tests easily
