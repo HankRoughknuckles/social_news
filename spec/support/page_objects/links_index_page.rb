@@ -57,11 +57,11 @@ class LinksIndexPage
 
   #vote buttons
   def click_upvote_button_for(link)
-    page.find(:css, "#{@upvote_button}-#{link.id}").click
+    page.find(:css, "#{@upvote_button}_#{link.id}").click
   end
 
   def click_downvote_button_for(link)
-    page.find(:css, "#{@downvote_button}-#{link.id}").click
+    page.find(:css, "#{@downvote_button}_#{link.id}").click
   end
 
 end

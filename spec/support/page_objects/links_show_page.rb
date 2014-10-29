@@ -29,18 +29,18 @@ class LinksShowPage
 
   #vote buttons
   def has_upvote_button_for?(link)
-    has_css? "#{@upvote_button}-#{link.id}"
+    has_css? "#{@upvote_button}_#{link.id}"
   end
 
   def has_downvote_button_for?(link)
-    has_css? "#{@downvote_button}-#{link.id}"
+    has_css? "#{@downvote_button}_#{link.id}"
   end
 
   def click_upvote_button_for(link)
-    page.find(:css, "#{@upvote_button}-#{link.id}").click
+    page.find(:css, "#{@upvote_button}_#{link.id}").click
   end
 
   def click_downvote_button_for(link)
-    page.find(:css, "#{@downvote_button}-#{link.id}").click
+    page.find(:css, "#{@downvote_button}_#{link.id}").click
   end
 end
