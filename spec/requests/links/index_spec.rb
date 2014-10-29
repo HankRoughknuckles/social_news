@@ -14,32 +14,47 @@ describe "Links#index" do
 
   context "while logged in" do
     let!(:user) { FactoryGirl.create(:user) }
+    let!(:user_link) { FactoryGirl.create(:link, user: user) }
 
     before { ui.visit_page_as user }
 
-    describe "page content" do
-      it "should be proper" do
-        other =           FactoryGirl.create(:user)
-        user_link =       FactoryGirl.create(:link, user: user)
-        non_user_link =   FactoryGirl.create(:link, user: other)
+    describe "the page" do
+      it { expect(ui).to have_title "All Links" }
+      it { expect(ui).to have_an_add_link_button }
+    end
 
-        visit page_path
+    describe "the logged in user's link" do
+      it { expect(ui).to have_link_for user_link }
+      it { expect(ui).to have_edit_button_for user_link }
+      it { expect(ui).to have_delete_button_for user_link }
+    end
 
-        expect(ui).to have_title "All Links"
-        expect(ui).to have_an_add_link_button
+    describe "the links of other users" do
+      let!(:other) { FactoryGirl.create(:user) }
+      let!(:non_user_link) { FactoryGirl.create(:link, user: other) }
 
-        #links
-        expect(ui).to have_link_for user_link
-        expect(ui).to have_link_for non_user_link
+      it { expect(ui).to have_link_for non_user_link }
+      it { expect(ui).not_to have_edit_button_for non_user_link }
+      it { expect(ui).not_to have_delete_button_for non_user_link }
+    end
+  end
 
-        #edit/delete for own links
-        expect(ui).to have_edit_button_for user_link
-        expect(ui).to have_delete_button_for user_link
+  describe "a link entry" do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user_link) { FactoryGirl.create(:link, user: user) }
 
-        #should not have edit/delete for others' links
-        expect(ui).not_to have_edit_button_for non_user_link
-        expect(ui).not_to have_delete_button_for non_user_link
-      end
+    before do 
+      user_link.liked_by(user)
+      ui.visit_page_as(nil) 
+    end
+
+    it "should have the number of comments" do
+      pending
+    end
+
+    it "should have the vote tally" do
+      expect(page).to have_css(
+        "#tally_#{user_link.id}", text: user_link.vote_tally)
     end
   end
 

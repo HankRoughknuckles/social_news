@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Link do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Link#vote_tally" do
+    it "should return the number of tallies"
+  end
 end

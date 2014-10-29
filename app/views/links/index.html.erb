@@ -26,6 +26,9 @@
           <td></td>
           <td></td>
         <% end %>
+        <td>
+          <span id="tally_<%= link.id %>"><%= link.vote_tally %></span>
+          </td>
         <% if user_signed_in? %>
           <td>
             <%= render 'shared/upvote_link', link: link %>
