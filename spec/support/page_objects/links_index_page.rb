@@ -4,11 +4,16 @@ class LinksIndexPage
   def initialize(page_path)
     @page_path = page_path
 
-    @upvote_button = "#upvote"
-    @downvote_button = "#downvote"
-
     @add_link_button = "a#add_link"
     @links_list = ".links"
+  end
+
+  def upvote_button_for(link)
+    return "#upvote_#{link.id}"
+  end
+
+  def downvote_button_for(link)
+    return "#downvote_#{link.id}"
   end
 
   #can pass nil to not log in as anyone
@@ -57,11 +62,11 @@ class LinksIndexPage
 
   #vote buttons
   def click_upvote_button_for(link)
-    page.find(:css, "#{@upvote_button}_#{link.id}").click
+    page.find(:css, upvote_button_for(link)).click
   end
 
   def click_downvote_button_for(link)
-    page.find(:css, "#{@downvote_button}_#{link.id}").click
+    page.find(:css, downvote_button_for(link)).click
   end
 
 end
