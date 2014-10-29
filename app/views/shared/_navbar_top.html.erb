@@ -1,12 +1,13 @@
 <% if user_signed_in? %>
 
-  <%= link_to "#{current_user.email}", edit_user_registration_path %>, 
-  not you? <%= link_to "Sign out", destroy_user_session_path %>
+  <%= link_to "#{current_user.email}", edit_user_registration_path, id: "edit_user_profile" %>, 
+  not you? 
+  <%= link_to "Sign out", destroy_user_session_path, id: "sign_out" %>
 
 <% else %>
 
-  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign in", new_user_session_path, id: "sign_in" %>
   or 
-  <%= link_to "Register", new_user_registration_path %>
+  <%= link_to "Register", new_user_registration_path, id: "sign_up" %>
 
 <% end %>
