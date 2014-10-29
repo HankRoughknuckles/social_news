@@ -4,4 +4,8 @@ class Link < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :address
+
+  def vote_tally
+    return self.get_upvotes.size - self.get_downvotes.size
+  end
 end
