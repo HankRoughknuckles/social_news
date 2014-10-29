@@ -2,7 +2,7 @@
 
   <%= link_to "#{current_user.email}", edit_user_registration_path, id: "edit_user_profile" %>, 
   not you? 
-  <%= link_to "Sign out", destroy_user_session_path, id: "sign_out" %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: "sign_out" %>
 
 <% else %>
 
