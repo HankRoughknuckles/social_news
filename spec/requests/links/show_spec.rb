@@ -70,6 +70,6 @@ describe "Links#show" do
   it "has a working vote tally" do
     ui.visit_page_as(nil)
 
-    expect(page).to have_css "#tally_#{link.id}", text: link.vote_tally
+    expect(ui).to have_tally_for link
   end
 end
