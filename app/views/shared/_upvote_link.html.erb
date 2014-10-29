@@ -1,0 +1,3 @@
+<%= link_to "Upvote (#{link.get_upvotes.size})", 
+  upvote_link_path(link), 
+  method: :put, id: "upvote-#{link.id}" %>

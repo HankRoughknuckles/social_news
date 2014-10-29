@@ -38,7 +38,7 @@ describe "Links#show" do
   it "upvoting as the link owner" do
     ui.visit_page_as link_owner
 
-    expect{ ui.click_upvote_button }.to(
+    expect{ ui.click_upvote_button_for(link) }.to(
       change { link.get_upvotes.size }.by(1))
   end
 
@@ -46,7 +46,7 @@ describe "Links#show" do
   it "downvoting as the link owner" do
     ui.visit_page_as link_owner
 
-    expect{ ui.click_downvote_button }.to(
+    expect{ ui.click_downvote_button_for(link) }.to(
       change { link.get_downvotes.size }.by(1))
   end
 
@@ -54,7 +54,7 @@ describe "Links#show" do
   it "upvoting as the someone who is not the link owner" do
     ui.visit_page_as non_owner
 
-    expect{ ui.click_upvote_button }.to(
+    expect{ ui.click_upvote_button_for(link) }.to(
       change { link.get_upvotes.size }.by(1))
   end
 
@@ -62,7 +62,7 @@ describe "Links#show" do
   it "downvoting as the someone who is not the link owner" do
     ui.visit_page_as non_owner
 
-    expect{ ui.click_downvote_button }.to(
+    expect{ ui.click_downvote_button_for(link) }.to(
       change { link.get_downvotes.size }.by(1))
   end
 end

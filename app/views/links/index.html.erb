@@ -28,14 +28,10 @@
         <% end %>
         <% if user_signed_in? %>
           <td>
-            <%= link_to "Upvote (#{link.get_upvotes.size})", 
-              upvote_link_path(link), 
-              method: :put, id: "upvote-#{link.id}" %>
+            <%= render 'shared/upvote_link', link: link %>
           </td>
           <td>
-            <%= link_to "Downvote (#{link.get_downvotes.size})", 
-              downvote_link_path(link), 
-              method: :put, id: "downvote-#{link.id}" %>
+            <%= render 'shared/downvote_link', link: link %>
           </td>
         <% else %>
           <td></td>
