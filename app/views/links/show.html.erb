@@ -2,7 +2,7 @@
 
 <p>
   <strong>Link:</strong>
-  <%= @link.link %>
+  <%= @link.address %>
 </p>
 
 <p>
@@ -15,5 +15,6 @@
   <%= @link.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Edit', edit_link_path(@link), id: "edit_link" %> |
+<%= link_to 'Delete', @link, id: "delete_link", method: :delete %> |
 <%= link_to 'Back', links_path %>
