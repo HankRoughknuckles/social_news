@@ -22,6 +22,24 @@
         <% if link.user == current_user %>
           <td><%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %></td>
           <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to "Upvote (#{link.get_upvotes.size})", 
+              upvote_link_path(link), 
+              method: :put, id: "upvote-#{link.id}" %>
+          </td>
+          <td>
+            <%= link_to "Downvote (#{link.get_downvotes.size})", 
+              downvote_link_path(link), 
+              method: :put, id: "downvote-#{link.id}" %>
+          </td>
+        <% else %>
+          <td></td>
+          <td></td>
         <% end %>
       </tr>
     <% end %>

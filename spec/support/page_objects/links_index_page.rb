@@ -1,9 +1,20 @@
 class LinksIndexPage
   include Capybara::DSL
 
-  def initialize
+  def initialize(page_path)
+    @page_path = page_path
+
+    @upvote_button = "#upvote"
+    @downvote_button = "#downvote"
+
     @add_link_button = "a#add_link"
     @links_list = ".links"
+  end
+
+  #can pass nil to not log in as anyone
+  def visit_page_as(user)
+    login_as(user)
+    visit @page_path
   end
 
   def has_title?(passed_title)
@@ -42,4 +53,15 @@ class LinksIndexPage
 
     click_save_button
   end
+
+
+  #vote buttons
+  def click_upvote_button_for(link)
+    page.find(:css, "#{@upvote_button}-#{link.id}").click
+  end
+
+  def click_downvote_button_for(link)
+    page.find(:css, "#{@downvote_button}-#{link.id}").click
+  end
+
 end
