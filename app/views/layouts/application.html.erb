@@ -13,8 +13,9 @@
   <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to "#{current_user.email}", edit_user_registration_path %>, 
-    not you? <%= link_to "Sign out", destroy_user_session_path %>
+    <%= render 'shared/signed_in_navbar' %>
+  <% else %>
+    
   <% end %>
 
   <div class="container">

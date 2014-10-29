@@ -1,15 +1,20 @@
 require "spec_helper"
 
 describe 'layouts/application' do
-  context "with a signed in user" do
 
-    it "should display a signout button" do
-      user = FactoryGirl.create(:user)
-      sign_in user
+  it "should display a sign in form when signed out" do
+    render
 
-      render 
+    expect(rendered).to have_css "input[value='submit']"
+  end
 
-      expect(rendered).to have_content "Sign out"
-    end
+
+  it "should display a signout button when signed in" do
+    user = FactoryGirl.create(:user)
+    sign_in user
+
+    render 
+
+    expect(rendered).to have_css "a", text: "Sign out"
   end
 end
