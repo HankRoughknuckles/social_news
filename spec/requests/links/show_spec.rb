@@ -13,6 +13,8 @@ describe "Links#show" do
     end
 
     it { expect(ui).to have_delete_button_for_link }
-      
+    it { expect(ui).to have_edit_button_for_link }
+    it { expect(ui).to have_upvote_button }
+    it { expect(ui).to have_downvote_button }
   end
 end
