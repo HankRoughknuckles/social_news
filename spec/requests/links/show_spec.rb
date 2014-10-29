@@ -1,5 +1,6 @@
 require "spec_helper"
 
+
 describe "Links#show" do
   let!(:link_owner) { FactoryGirl.create(:user) }
   let!(:non_owner) { FactoryGirl.create(:user) }
@@ -64,5 +65,11 @@ describe "Links#show" do
 
     expect{ ui.click_downvote_button_for(link) }.to(
       change { link.get_downvotes.size }.by(1))
+  end
+
+  it "has a working vote tally" do
+    ui.visit_page_as(nil)
+
+    expect(page).to have_css "#tally_#{link.id}", text: link.vote_tally
   end
 end

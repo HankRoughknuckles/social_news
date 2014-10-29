@@ -15,7 +15,7 @@ class LinksShowPage
   end
 
   def visit_page_as(user)
-    login_as(user)
+    user.present? ? login_as(user) : logout
     visit @page_path
   end
 
