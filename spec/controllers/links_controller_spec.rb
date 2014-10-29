@@ -7,7 +7,11 @@ end
 describe LinksController do
 
   describe "POST #create" do
+    let!(:user) { FactoryGirl.create(:user) }
+
     context "with an empty address" do
+      before { sign_in user }
+
       cases = ["", nil]
 
       cases.each do |address|
@@ -16,7 +20,7 @@ describe LinksController do
         it "does not save the link when address is \"#{address}\"" do
           expect { 
             post :create, link: link_hash
-          }.not_to change{Link.count}
+          }.not_to change{user.links.count}
         end
 
         it "renders the new template when address is \"#{address}\"" do
