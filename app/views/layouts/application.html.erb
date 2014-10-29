@@ -12,11 +12,7 @@
     <%= content_tag(:div, msg, class: "alert alert-info") %>
   <% end %>
 
-  <% if user_signed_in? %>
-    <%= render 'shared/signed_in_navbar' %>
-  <% else %>
-    
-  <% end %>
+  <%= render 'shared/navbar_top' %>
 
   <div class="container">
     <%= yield %>
