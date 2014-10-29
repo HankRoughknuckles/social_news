@@ -19,6 +19,8 @@ gem "paperclip", "~> 4.2" # Allow the user to upload photos and files with paper
 
 gem 'jquery-turbolinks' #Make jquery play nice with turbolinks
 
+gem 'acts_as_votable'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
