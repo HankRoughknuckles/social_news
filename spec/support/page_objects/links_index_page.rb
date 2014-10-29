@@ -15,7 +15,7 @@ class LinksIndexPage
   end
 
   def has_link_for?(link)
-    has_css? "#{@links_list} a", text: link.address
+    has_css? "#{@links_list} a[href=\"http://#{link.address}\"]", text: link.address
   end
 
   def has_edit_button_for?(link)
