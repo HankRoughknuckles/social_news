@@ -1,6 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<% if user_signed_in? %>
+  <%= link_to "Upvote (#{@link.get_upvotes.size})", 
+              upvote_link_path(@link), 
+              method: :put, id: "upvote" %>
+  
+  <%= link_to "Downvote (#{@link.get_downvotes.size})", 
+              downvote_link_path(@link), 
+              method: :put, id: "downvote" %>
+<% end %>
+</p>
+
+<p>
   <strong>Link:</strong>
   <%= @link.address %>
 </p>
@@ -11,10 +23,12 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @link.user_id %>
+  <strong>Posted by:</strong>
+  <%= @link.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_link_path(@link), id: "edit_link" %> |
-<%= link_to 'Delete', @link, id: "delete_link", method: :delete %> |
+<% if current_user == @link.user %>
+  <%= link_to 'Edit', edit_link_path(@link), id: "edit_link" %> |
+  <%= link_to 'Delete', @link, id: "delete_link", method: :delete %> |
+<% end %>
 <%= link_to 'Back', links_path %>

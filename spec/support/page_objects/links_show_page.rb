@@ -1,11 +1,22 @@
 class LinksShowPage
   include Capybara::DSL
 
-  def initialize
+  def initialize(page_path)
+    @page_path = page_path #the path to the current page
+
     @delete_button_for_link = "#delete_link"
     @edit_button_for_link = "#edit_link"
     @upvote_button = "#upvote"
     @downvote_button = "#downvote"
+  end
+
+  def visit_page
+    visit @page_path
+  end
+
+  def visit_page_as(user)
+    login_as(user)
+    visit @page_path
   end
 
   def has_edit_button_for_link?
@@ -22,5 +33,13 @@ class LinksShowPage
 
   def has_downvote_button?
     has_css? @downvote_button
+  end
+
+  def click_upvote_button
+    page.find(:css, @upvote_button).click
+  end
+
+  def click_downvote_button
+    page.find(:css, @downvote_button).click
   end
 end
