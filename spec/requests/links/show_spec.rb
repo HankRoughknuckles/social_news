@@ -126,4 +126,12 @@ describe "Links#show" do
 
     expect(ui).not_to have_delete_button_for_comment(comment)
   end
+
+  it "should delete comment when delete button is clicked" do
+    ui.visit_page_as(link_owner)
+    comment = ui.create_comment_by(link_owner)
+
+    expect {ui.click_delete_button_for_comment(comment)}
+      .to change{ link_owner.comments.count }.by(-1)
+  end
 end

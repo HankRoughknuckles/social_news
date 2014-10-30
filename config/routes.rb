@@ -6,8 +6,10 @@ Rails.application.routes.draw do
       put "downvote", to: "links#downvote"
     end
 
-    resources :comments
+    resources :comments, only: :create
   end
+
+  resources :comments, only: :destroy
 
   root 'links#index'
 

@@ -82,11 +82,25 @@ class LinksShowPage
     return Comment.last
   end
 
+
+  def create_comment_by(user)
+    comment = FactoryGirl.build(:comment, user: user)
+    find( @comment_input ).set comment.comment
+    page.find( @submit_comment_button ).click
+
+    return Comment.last
+  end
+
+
   def has_comment_author_name?
     has_css? @comment_author_name
   end
 
   def has_delete_button_for_comment?(comment)
     has_css? delete_button_for_comment(comment)
+  end
+
+  def click_delete_button_for_comment(comment)
+    page.find(:css, delete_button_for_comment(comment)).click
   end
 end
