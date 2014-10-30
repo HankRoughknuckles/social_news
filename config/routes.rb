@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       put "upvote", to: "links#upvote"
       put "downvote", to: "links#downvote"
     end
+
+    resources :comments
   end
 
   root 'links#index'

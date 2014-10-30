@@ -15,6 +15,7 @@ describe "Links#show" do
 
       it { expect(ui).not_to have_delete_button_for_link }
       it { expect(ui).not_to have_edit_button_for_link }
+      it { expect(ui).not_to have_comment_form }
     end
 
 
@@ -71,5 +72,12 @@ describe "Links#show" do
     ui.visit_page_as(nil)
 
     expect(ui).to have_tally_for link
+  end
+
+  it "can add comments when logged in" do
+    ui.visit_page_as(link_owner)
+
+    expect{ ui.create_comment("blah") }
+      .to change{link_owner.comments.count}.by(1)
   end
 end

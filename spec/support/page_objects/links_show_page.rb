@@ -6,6 +6,10 @@ class LinksShowPage
 
     @delete_button_for_link = "#delete_link"
     @edit_button_for_link = "#edit_link"
+
+    @comment_form =             ".new_comment"
+    @comment_input =            "#{@comment_form} input[type=text]"
+    @submit_comment_button =    "#{@comment_form} input[type=submit]"
   end
 
   def upvote_button_for(link)
@@ -57,5 +61,16 @@ class LinksShowPage
 
   def has_tally_for?(link)
     has_css? tally_for(link), text: link.vote_tally
+  end
+
+
+  #comment stuff
+  def has_comment_form?
+    has_css? @comment_form
+  end
+
+  def create_comment(text = "blahblah")
+    find( @comment_input ).set text
+    page.find( @submit_comment_button ).click
   end
 end

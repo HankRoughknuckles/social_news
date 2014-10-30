@@ -24,6 +24,15 @@
   <%= @link.user.email %>
 </p>
 
+<% if user_signed_in? %>
+  <div class="new_comment">
+    <%= form_for [@link, @comment] do |f| %>
+      <%= f.text_field :comment %>
+      <%= f.submit "Submit" %>
+    <% end %>
+  </div>
+<% end %>
+
 <% if current_user == @link.user %>
   <%= link_to 'Edit', edit_link_path(@link), id: "edit_link" %> |
   <%= link_to 'Delete', @link, id: "delete_link", method: :delete %> |

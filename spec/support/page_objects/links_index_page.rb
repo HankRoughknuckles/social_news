@@ -68,5 +68,4 @@ class LinksIndexPage
   def click_downvote_button_for(link)
     page.find(:css, downvote_button_for(link)).click
   end
-
 end
