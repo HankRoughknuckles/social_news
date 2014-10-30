@@ -53,6 +53,7 @@ class LinksIndexPage
   def create_link(link)
     click_add_link_button
 
+    fill_in 'link_title', with: link.address
     fill_in 'link_address', with: link.address
     fill_in 'link_description', with: link.description
 

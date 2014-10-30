@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :link do
+    title           "This cool new search engine"
     address         "www.google.com"
     description     "MyText"
     user_id         1
