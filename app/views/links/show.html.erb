@@ -24,14 +24,23 @@
   <%= @link.user.email %>
 </p>
 
-<% if user_signed_in? %>
-  <div class="new_comment">
-    <%= form_for [@link, @comment] do |f| %>
-      <%= f.text_field :comment %>
-      <%= f.submit "Submit" %>
-    <% end %>
-  </div>
-<% end %>
+<div class="comments">
+  <% @link.comments.all.each do |comment|%>
+    <div class="comment-<%= comment.id %>">
+      Comment by: <span class="author"><%= comment.user.email %></span>
+      <div class="comment_body"><%= comment.comment %></div>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div class="new_comment">
+      <%= form_for [@link, @comment] do |f| %>
+        <%= f.text_field :comment %>
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <% if current_user == @link.user %>
   <%= link_to 'Edit', edit_link_path(@link), id: "edit_link" %> |

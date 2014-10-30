@@ -80,4 +80,19 @@ describe "Links#show" do
     expect{ ui.create_comment("blah") }
       .to change{link_owner.comments.count}.by(1)
   end
+
+  describe "comment layout" do
+    before do
+      ui.visit_page_as(link_owner)
+      ui.create_comment("blah")
+    end
+
+    it "should have the comment" do
+      expect(page).to have_content "blah"
+    end
+
+    it "should have the name of the commenter" do
+      expect(ui).to have_comment_author_name
+    end
+  end
 end

@@ -10,6 +10,7 @@ class LinksShowPage
     @comment_form =             ".new_comment"
     @comment_input =            "#{@comment_form} input[type=text]"
     @submit_comment_button =    "#{@comment_form} input[type=submit]"
+    @comment_author_name =      ".author"
   end
 
   def upvote_button_for(link)
@@ -72,5 +73,9 @@ class LinksShowPage
   def create_comment(text = "blahblah")
     find( @comment_input ).set text
     page.find( @submit_comment_button ).click
+  end
+
+  def has_comment_author_name?
+    has_css? @comment_author_name
   end
 end

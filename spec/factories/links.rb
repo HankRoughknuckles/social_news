@@ -5,5 +5,6 @@ FactoryGirl.define do
     address         "www.google.com"
     description     "MyText"
     user_id         1
+    user
   end
 end
