@@ -34,6 +34,9 @@ gem 'figaro' #keep your secrets in environment variables
 
 gem 'spring',        group: :development # Spring speeds up development by keeping your application running in the background.
 
+gem 'acts_as_commentable' #Enable comments
+
+
 group :development, :test do
   gem 'guard'
   gem "rspec-rails", '~> 2.14.0.rc1'
