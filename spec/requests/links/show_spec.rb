@@ -76,24 +76,54 @@ describe "Links#show" do
   end
 
   it "can add comments when logged in" do
+    attrs = FactoryGirl.attributes_for(:comment, 
+                                       comment: "blah",
+                                       user: link_owner)
     ui.visit_page_as(link_owner)
 
-    expect{ ui.create_comment("blah") }
+    expect{ ui.create_comment(attrs) }
       .to change{link_owner.comments.count}.by(1)
   end
 
   describe "comment layout" do
+    let!(:comment_attributes) { FactoryGirl.attributes_for(:comment, 
+                                                :user => link_owner) }
     before do
       ui.visit_page_as(link_owner)
-      ui.create_comment("blah")
     end
 
     it "should have the comment" do
-      expect(page).to have_content "blah"
+      comment = ui.create_comment(comment_attributes)
+
+      expect(page).to have_content comment.comment
     end
 
+
     it "should have the name of the commenter" do
+      comment = ui.create_comment(comment_attributes)
+
       expect(ui).to have_comment_author_name
     end
+  end
+
+  it "should have a delete comment button when user is comment owner" do
+    ui.visit_page_as(link_owner)
+
+    comment = ui.create_comment(
+      FactoryGirl.attributes_for(:comment, user: link_owner) )
+
+    expect(ui).to have_delete_button_for_comment(comment)
+  end
+
+  it "should not have a delete comment button when logged in as
+  a non-comment owner" do
+    ui.visit_page_as(link_owner)
+
+    comment = ui.create_comment(
+      FactoryGirl.attributes_for(:comment, user: link_owner) )
+
+    ui.visit_page_as(non_owner)
+
+    expect(ui).not_to have_delete_button_for_comment(comment)
   end
 end

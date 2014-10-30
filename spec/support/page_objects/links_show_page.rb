@@ -25,6 +25,10 @@ class LinksShowPage
     return "#tally_#{link.id}"
   end
 
+  def delete_button_for_comment(comment)
+    return "#delete_comment_#{comment.id}"
+  end
+
 
   def visit_page
     visit @page_path
@@ -70,12 +74,19 @@ class LinksShowPage
     has_css? @comment_form
   end
 
-  def create_comment(text = "blahblah")
-    find( @comment_input ).set text
+  def create_comment(comment_attributes = nil)
+    comment = FactoryGirl.build(:comment, comment_attributes)
+    find( @comment_input ).set comment.comment
     page.find( @submit_comment_button ).click
+
+    return Comment.last
   end
 
   def has_comment_author_name?
     has_css? @comment_author_name
+  end
+
+  def has_delete_button_for_comment?(comment)
+    has_css? delete_button_for_comment(comment)
   end
 end

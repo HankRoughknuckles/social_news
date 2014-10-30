@@ -10,7 +10,7 @@
 </p>
 
 <p>
-  <h2> <%= @link.title %> </h2>
+  <h2><%= @link.title %></h2>
 </p>
 
 <p>
@@ -32,6 +32,10 @@
     <div class="comment-<%= comment.id %>">
       Comment by: <span class="author"><%= comment.user.email %></span>
       <div class="comment_body"><%= comment.comment %></div>
+
+      <% if current_user == comment.user %>
+        <%= link_to "Delete comment", [@link, comment], method: :destroy, id: "delete_comment_#{comment.id}" %>
+      <% end %>
     </div>
   <% end %>
 
