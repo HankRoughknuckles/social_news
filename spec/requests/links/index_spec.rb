@@ -58,6 +58,7 @@ describe "Links#index" do
     end
   end
 
+
   it "should let the user add links" do
     user = FactoryGirl.create(:user)
     new_link = FactoryGirl.build(:link, user: user)
@@ -68,6 +69,7 @@ describe "Links#index" do
     expect(ui).to have_link_for new_link
   end
 
+
   it "should let the user upvote links" do
     user = FactoryGirl.create(:user)
     link = FactoryGirl.create(:link, user: user)
@@ -77,6 +79,7 @@ describe "Links#index" do
     expect{ ui.click_upvote_button_for(link) }.to(
       change { link.get_upvotes.size }.by(1))
   end
+
 
   it "should let the user downvote links" do
     user = FactoryGirl.create(:user)
