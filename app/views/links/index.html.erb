@@ -15,10 +15,10 @@
   <tbody class="links">
     <% @links.each do |link| %>
       <tr>
-        <td><%= link_to link.address, "http://#{link.address}" %></td>
+        <td><%= link_to "(go)", "http://#{link.address}" %><%= link_to link.title, link %></td>
         <td><%= link.description %></td>
         <td><%= link.user.email %></td>
-        <td><%= link_to 'Show', link, id: "show-#{link.id}" %></td>
+        <!-- <td><%= link_to 'Show', link, id: "show&#45;#{link.id}" %></td> -->
         <% if link.user == current_user %>
           <td><%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %></td>
           <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %></td>
