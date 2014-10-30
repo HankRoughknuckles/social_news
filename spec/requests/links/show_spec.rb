@@ -13,6 +13,7 @@ describe "Links#show" do
     context "when not logged in" do
       before { ui.visit_page }
 
+      it { expect(page).to have_content link.title }
       it { expect(ui).not_to have_delete_button_for_link }
       it { expect(ui).not_to have_edit_button_for_link }
       it { expect(ui).not_to have_comment_form }

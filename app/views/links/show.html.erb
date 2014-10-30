@@ -10,8 +10,11 @@
 </p>
 
 <p>
-  <strong>Link:</strong>
-  <%= @link.address %>
+  <h2> <%= @link.title %> </h2>
+</p>
+
+<p>
+  <%= link_to @link.address, "http://#{@link.address}" %>
 </p>
 
 <p>
