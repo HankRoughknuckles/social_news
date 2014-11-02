@@ -1,12 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-<%= render 'shared/vote_tally', link: @link %>
-
-<% if user_signed_in? %>
-  <%= render "shared/upvote_link", link: @link %>
-  <%= render 'shared/downvote_link', link: @link %>
-<% end %>
+  <%= render 'shared_vote_buttons', link: @link %>
 </p>
 
 <p>

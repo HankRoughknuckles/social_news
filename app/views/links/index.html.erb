@@ -6,9 +6,9 @@
   <% @links.each do |link| %>
     <li class="list-group-item">
     <h4 class="list-group-item-heading">
-      <%= render 'shared/upvote_link', link: link %>
-      <%= render 'shared/vote_tally', link: link %>
-      <%= render 'shared/downvote_link', link: link %>
+
+      <%= render 'shared_vote_buttons', link: link %>
+
       <%= link_to "http://#{link.address}", title: "Go to linked page", target: "_blank" do %>
         <span class="glyphicon glyphicon-new-window"></span>
       <% end %>
