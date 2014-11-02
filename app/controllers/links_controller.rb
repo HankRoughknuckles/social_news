@@ -67,14 +67,14 @@ class LinksController < ApplicationController
   #PUT /links/:id/upvote
   def upvote
     @link.liked_by current_user
-    redirect_to @link
+    redirect_to :back
   end
 
 
   #PUT /links/:id/downvote
   def downvote
     @link.disliked_by current_user
-    redirect_to @link
+    redirect_to :back
   end
 
   private
