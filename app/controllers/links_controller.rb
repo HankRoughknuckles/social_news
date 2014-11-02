@@ -66,15 +66,23 @@ class LinksController < ApplicationController
 
   #PUT /links/:id/upvote
   def upvote
-    @link.liked_by current_user
-    redirect_to :back
+    if user_signed_in?
+      @link.liked_by current_user
+      redirect_to :back
+    else
+      redirect_to :back, alert: "Please sign in to upvote a link"
+    end
   end
 
 
   #PUT /links/:id/downvote
   def downvote
-    @link.disliked_by current_user
-    redirect_to :back
+    if user_signed_in?
+      @link.disliked_by current_user
+      redirect_to :back
+    else
+      redirect_to :back, alert: "Please sign in to upvote a link"
+    end
   end
 
   private
