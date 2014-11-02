@@ -6,37 +6,22 @@
   <% @links.each do |link| %>
     <li class="list-group-item">
     <h4 class="list-group-item-heading">
-      <td>
-        <%= link_to "http://#{link.address}", title: "Go to linked page", target: "_blank" do %>
-          <span class="glyphicon glyphicon-new-window"></span>
-        <% end %>
-        <%= link_to link.title, link, title: "See details", target: "_blank" %></td>
+      <%= link_to "http://#{link.address}", title: "Go to linked page", target: "_blank" do %>
+        <span class="glyphicon glyphicon-new-window"></span>
+      <% end %>
+      <%= link_to link.title, link, title: "See details", target: "_blank" %>
     </h4>
-    <tr>
-      <td>Shared by: <%= link.user.email %></td>
-      <!-- <td><%= link_to 'Show', link, id: "show&#45;#{link.id}" %></td> -->
-      <% if link.user == current_user %>
-        <td><%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %></td>
-      <% else %>
-        <td></td>
-        <td></td>
-      <% end %>
-      <td>
-        <%= render 'shared/vote_tally', link: link %>
-      </td>
-      <% if user_signed_in? %>
-        <td>
-          <%= render 'shared/upvote_link', link: link %>
-        </td>
-        <td>
-          <%= render 'shared/downvote_link', link: link %>
-        </td>
-      <% else %>
-        <td></td>
-        <td></td>
-      <% end %>
-    </tr>
+    Shared by: <%= link.user.email %>
+    <!-- <td><%= link_to 'Show', link, id: "show&#45;#{link.id}" %></td> -->
+    <% if link.user == current_user %>
+      <%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %>
+      <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %>
+    <% end %>
+    <%= render 'shared/vote_tally', link: link %>
+    <% if user_signed_in? %>
+      <%= render 'shared/upvote_link', link: link %>
+      <%= render 'shared/downvote_link', link: link %>
+    <% end %>
     </li>
   <% end %>
 </ul>
