@@ -9,11 +9,11 @@
 <body>
 
   <div class="container">
-  <% flash.each do |name, msg| %>
-    <%= content_tag(:div, msg, class: "alert alert-info") %>
-  <% end %>
+    <%= render 'shared/navbar_top' %>
 
-  <%= render 'shared/navbar_top' %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert alert-info") %>
+    <% end %>
 
     <%= yield %>
   </div>
