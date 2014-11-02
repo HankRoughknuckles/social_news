@@ -1,3 +1,4 @@
-<%= link_to "Downvote (#{link.get_downvotes.size})", 
-            downvote_link_path(link), 
-            method: :put, id: "downvote_#{link.id}" %>
+<%= link_to downvote_link_path(link), method: :put, id: "downvote_#{link.id}" do %>
+  <span class="glyphicon glyphicon-chevron-down"></span>
+<% end %>
+

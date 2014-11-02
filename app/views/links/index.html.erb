@@ -6,6 +6,9 @@
   <% @links.each do |link| %>
     <li class="list-group-item">
     <h4 class="list-group-item-heading">
+      <%= render 'shared/upvote_link', link: link %>
+      <%= render 'shared/vote_tally', link: link %>
+      <%= render 'shared/downvote_link', link: link %>
       <%= link_to "http://#{link.address}", title: "Go to linked page", target: "_blank" do %>
         <span class="glyphicon glyphicon-new-window"></span>
       <% end %>
@@ -16,11 +19,6 @@
     <% if link.user == current_user %>
       <%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %>
       <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %>
-    <% end %>
-    <%= render 'shared/vote_tally', link: link %>
-    <% if user_signed_in? %>
-      <%= render 'shared/upvote_link', link: link %>
-      <%= render 'shared/downvote_link', link: link %>
     <% end %>
     </li>
   <% end %>
