@@ -7,12 +7,12 @@
     <li class="list-group-item">
     <h4 class="list-group-item-heading">
 
-      <%= render 'shared_vote_buttons', link: link %>
+      <%= render 'shared/vote_buttons', link: link %>
 
       <%= link_to "http://#{link.address}", title: "Go to linked page", target: "_blank" do %>
         <span class="glyphicon glyphicon-new-window"></span>
       <% end %>
-      <%= link_to link.title, link, title: "See details", target: "_blank" %>
+      <%= link_to link.title, link, title: "See details" %>
     </h4>
     Shared by: <%= link.user.email %>
     <!-- <td><%= link_to 'Show', link, id: "show&#45;#{link.id}" %></td> -->
