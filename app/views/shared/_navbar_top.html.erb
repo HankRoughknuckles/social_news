@@ -14,6 +14,14 @@
       <ul class="nav navbar-nav navbar-right">
 
       <% if user_signed_in? %>
+        <li>
+          <%= link_to new_link_path, id: "add_link" do %>
+            <span class="glyphicon glyphicon-plus"></span> Add a Link
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if user_signed_in? %>
         <%= render 'shared/signed_in_navbar' %>
       <% else %>
         <%= render 'shared/signed_out_navbar' %>
