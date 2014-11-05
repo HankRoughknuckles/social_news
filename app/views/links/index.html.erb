@@ -23,48 +23,6 @@
     </li>
   <% end %>
 </ul>
-<!-- <table> -->
-<!--   <thead> -->
-<!--     <tr> -->
-<!--       <th>Link</th> -->
-<!--       <th>Description</th> -->
-<!--       <th>User</th> -->
-<!--       <th colspan="3"></th> -->
-<!--     </tr> -->
-<!--   </thead> -->
-<!--  -->
-<!--   <tbody class="links"> -->
-<!--     <% @links.each do |link| %> -->
-<!--       <tr> -->
-<!--         <td><%= link_to "(go)", "http://#{link.address}" %><%= link_to link.title, link %></td> -->
-<!--         <td><%= link.description %></td> -->
-<!--         <td><%= link.user.email %></td> -->
-<!--         <!&#45;&#45; <td><%= link_to 'Show', link, id: "show&#38;#45;#{link.id}" %></td> &#45;&#45;> -->
-<!--         <% if link.user == current_user %> -->
-<!--           <td><%= link_to 'Edit', edit_link_path(link), id: "edit&#45;#{link.id}" %></td> -->
-<!--           <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete&#45;#{link.id}" %></td> -->
-<!--         <% else %> -->
-<!--           <td></td> -->
-<!--           <td></td> -->
-<!--         <% end %> -->
-<!--         <td> -->
-<!--           <%= render 'shared/vote_tally', link: link %> -->
-<!--         </td> -->
-<!--         <% if user_signed_in? %> -->
-<!--           <td> -->
-<!--             <%= render 'shared/upvote_link', link: link %> -->
-<!--           </td> -->
-<!--           <td> -->
-<!--             <%= render 'shared/downvote_link', link: link %> -->
-<!--           </td> -->
-<!--         <% else %> -->
-<!--           <td></td> -->
-<!--           <td></td> -->
-<!--         <% end %> -->
-<!--       </tr> -->
-<!--     <% end %> -->
-<!--   </tbody> -->
-<!-- </table> -->
 
 <br>
 
