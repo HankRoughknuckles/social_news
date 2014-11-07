@@ -9,16 +9,18 @@
         <%= link_to link.title, link, title: "See details" %>
       </div>
       <div class="col-xs-1">
-        <%= link_to "http://#{link.address}", title: "Go to linked page", target: "_blank" do %>
+        <%= link_to "http://#{link.address}", {title: "Go to linked page",
+                                               target: "_blank"} do %>
           <span class="glyphicon glyphicon-new-window"></span>
         <% end %>
       </div>
     </h4>
     Shared by: <%= link.user.email %>
           <!-- <td><%= link_to 'Show', link, id: "show&#45;#{link.id}" %></td> -->
-          <% if link.user == current_user %>
-    <%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %>
-    <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %>
-          <% end %>
+    <% if link.user == current_user %>
+      <%= link_to 'Edit', edit_link_path(link), id: "edit-#{link.id}" %>
+      <%= link_to 'Destroy', link, method: :delete, 
+        data: { confirm: 'Are you sure?' }, id: "delete-#{link.id}" %>
+    <% end %>
   </li>
 </div>
