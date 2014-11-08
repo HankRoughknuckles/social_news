@@ -14,6 +14,8 @@ class Link < ActiveRecord::Base
   end
 
   def upvoted_by?(user)
+    return nil if user.nil?
+
     if user.voted_as_when_voted_for(self) == true
       return true
     end
@@ -21,6 +23,8 @@ class Link < ActiveRecord::Base
   end
 
   def downvoted_by?(user)
+    return nil if user.nil?
+
     if user.voted_as_when_voted_for(self) == false
       return true
     end
