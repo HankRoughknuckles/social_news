@@ -1,5 +1,5 @@
 <%= link_to upvote_link_path(link), { method: :put, 
                                       id: "upvote_#{link.id}", 
                                       title: "Click to upvote" } do %>
-  <span class="glyphicon glyphicon-chevron-up"></span>
+  <%= upvote_icon_for link %>
 <% end %>

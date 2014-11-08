@@ -12,4 +12,18 @@ class Link < ActiveRecord::Base
   def vote_tally
     return self.get_upvotes.size - self.get_downvotes.size
   end
+
+  def upvoted_by?(user)
+    if user.voted_as_when_voted_for(self) == true
+      return true
+    end
+      return false
+  end
+
+  def downvoted_by?(user)
+    if user.voted_as_when_voted_for(self) == false
+      return true
+    end
+      return false
+  end
 end
