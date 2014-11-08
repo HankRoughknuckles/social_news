@@ -2,6 +2,7 @@ class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy,
                                   :upvote, :downvote]
   include ApplicationHelper
+  include UrlHelper
 
   # GET /links
   # GET /links.json

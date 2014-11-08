@@ -10,8 +10,9 @@
       </div>
 
       <div class="col-xs-1">
-        <%= link_to "http://#{link.address}", {title: "Go to linked page",
-                                               target: "_blank"} do %>
+        <%= link_to external_url(link.address), {title: "Go to linked page",
+                                                 id: "actual_page_#{link.id}",
+                                                 target: "_blank"} do %>
           <span class="glyphicon glyphicon-new-window"></span>
         <% end %>
       </div>
