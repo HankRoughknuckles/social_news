@@ -1,6 +1,6 @@
 <%= link_to downvote_link_path(link), { method: :put, 
                                         id: "downvote_#{link.id}", 
                                         title: "Click to downvote" } do %>
-  <span class="glyphicon glyphicon-chevron-down"></span>
+  <%= downvote_icon_for(link) %>
 <% end %>
 

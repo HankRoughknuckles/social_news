@@ -100,4 +100,14 @@ describe "Links#index" do
 
     expect( find("#upvote_#{link.id}") ).to have_css ".selected"
   end
+
+  it "should show downvoted links as being selected if clicked" do
+    user = FactoryGirl.create(:user)
+    link = FactoryGirl.create(:link, user: user)
+
+    ui.visit_page_as(user)
+    ui.click_downvote_button_for(link)
+
+    expect( find("#downvote_#{link.id}") ).to have_css ".selected"
+  end
 end

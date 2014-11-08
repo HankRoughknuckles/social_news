@@ -8,4 +8,12 @@ module ApplicationHelper
 
     return content_tag(:span, nil, class: classes)
   end
+
+
+  def downvote_icon_for(link)
+    classes = @@downvote_icon_classes
+    classes += " selected" if link.downvoted_by?(current_user)
+
+    return content_tag(:span, nil, class: classes)
+  end
 end
