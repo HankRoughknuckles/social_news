@@ -16,6 +16,7 @@ class LinksIndexPage
     return "#downvote_#{link.id}"
   end
 
+
   #can pass nil to not log in as anyone
   def visit_page_as(user)
     login_as(user)
