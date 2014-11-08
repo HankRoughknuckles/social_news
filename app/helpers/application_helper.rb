@@ -1,6 +1,6 @@
 module ApplicationHelper
-  @@upvote_icon_classes = "vote_icon glyphicon glyphicon-chevron-up"
-  @@downvote_icon_classes = "vote_icon glyphicon glyphicon-chevron-down"
+  @@upvote_icon_classes = "vote_icon grey glyphicon glyphicon-chevron-up"
+  @@downvote_icon_classes = "vote_icon grey glyphicon glyphicon-chevron-down"
 
   def upvote_icon_for(link)
     classes = @@upvote_icon_classes
