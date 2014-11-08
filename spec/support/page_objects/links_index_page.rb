@@ -16,6 +16,10 @@ class LinksIndexPage
     return "#downvote_#{link.id}"
   end
 
+  def actual_page_link_for(link)
+    return "#actual_page_#{link.id}"
+  end
+
 
   #can pass nil to not log in as anyone
   def visit_page_as(user)
@@ -69,5 +73,9 @@ class LinksIndexPage
 
   def click_downvote_button_for(link)
     page.find(:css, downvote_button_for(link)).click
+  end
+
+  def click_actual_page_link_for(link)
+    page.find(:css, actual_page_link_for(link)).click
   end
 end

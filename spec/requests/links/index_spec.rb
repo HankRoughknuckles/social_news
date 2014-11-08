@@ -110,4 +110,22 @@ describe "Links#index" do
 
     expect( find("#downvote_#{link.id}") ).to have_css ".selected"
   end
+
+  it "should have a working link to the page when the link doesn't start with http" do
+    user = FactoryGirl.create(:user)
+    link = FactoryGirl.create(:link, address: "www.google.com",
+                                     user: user)
+
+    ui.visit_page_as user
+    expect(page).to have_css "a[href='http://www.google.com']"
+  end
+
+  it "should have a working link to the page when the link starts with http" do
+    user = FactoryGirl.create(:user)
+    link = FactoryGirl.create(:link, address: "http://www.google.com",
+                                     user: user)
+
+    ui.visit_page_as user
+    expect(page).to have_css "a[href='http://www.google.com']"
+  end
 end
